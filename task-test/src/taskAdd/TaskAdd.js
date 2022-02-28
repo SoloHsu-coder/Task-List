@@ -87,13 +87,8 @@ const TaskAdd = ()=>{
             <button onClick ={addTask} type = "button">Add</button>
             
             {tasks.length >0 && tasks.map(t=>(
-                t.id !=='' && t.isCompleted=== "true" ?
-                    <div className="complete-form" key = {t.id}>
-                        <ul className ="complete">{t.task}</ul>
-                        <button onClick = {()=>Completed(t.id)}className ="complete-btn" >Complete</button>
-                        <button onClick = {()=>Deleted(t.id)}className ="delete-btn">Delete</button>                   
-                    </div> :
-     
+                t.id !=='' && 
+                    
                     <div className="complete-form" key = {t.id}>
                         <ul className ="task-list">{t.task}</ul>
                         <button onClick = {()=>Completed(t.id)}className ="complete-btn" >Complete</button>
