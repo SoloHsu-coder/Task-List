@@ -1,0 +1,7 @@
+.complete {
+  text-decoration-line: line-through;
+  text-decoration-style: solid;
+}
+.crossed-line {
+  text-decoration: line-through;
+}
