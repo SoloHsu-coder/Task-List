@@ -37,9 +37,8 @@ import '../completeDelete.css';
 
 
 const TaskAdd = ()=>{
-    const [tasks,setTasks] = useState([
-        
-    ]);
+    const [tasks,setTasks] = useState("task-list")
+    
     const inputRef = createRef();
     
     const addTask = (event)=>{
@@ -66,17 +65,19 @@ const TaskAdd = ()=>{
 
     
 }
-    const Completed=(id)=>{
-        
-        const newComplete = (tasks.filter((t)=>{
-           return  t.id === id ;
-
-    } ))
-    console.log(newComplete);
-    
-    
+    const Completed=(t)=>{
+        setTasks(tasks.map((list)=>{
+            if(list.id === t.id){
+                return {...list,isCompleted:!list.isCompleted}
+            }
+            return list;
+        }
+        )
+        );
+          {
+              t.isCompleted ? setTasks("complete"):setTasks("task-list")
+          }          
     }
-    
  //return <li style={{textDecoration: clicked ? "line-through": "none" }}  
  
     return(
@@ -88,14 +89,15 @@ const TaskAdd = ()=>{
             
             {tasks.length >0 && tasks.map(t=>(
                 t.id !=='' && 
-                    
                     <div className="complete-form" key = {t.id}>
-                        <ul className ="task-list">{t.task}</ul>
-                        <button onClick = {()=>Completed(t.id)}className ="complete-btn" >Complete</button>
+                        <ul className ="task-list">{t}</ul>
+                        <button onClick = {()=>Completed(t.task)}className ="complete-btn" >Complete</button>
                         <button onClick = {()=>Deleted(t.id)}className ="delete-btn">Delete</button>                   
                     </div> 
                     
             ))}
+
+            
             
             
         </div>
